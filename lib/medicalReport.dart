@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 class medicalReportPage extends StatefulWidget {
   const medicalReportPage({Key? key}) : super(key: key);
 
@@ -10,6 +10,7 @@ class medicalReportPage extends StatefulWidget {
 class _medicalReportPageState extends State<medicalReportPage> {
   @override
   Widget build(BuildContext context) {
+
     final _height = MediaQuery.of(context).size.height;
     final _width = MediaQuery.of(context).size.width;
     return Scaffold(

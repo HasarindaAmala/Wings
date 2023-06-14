@@ -45,6 +45,7 @@ dependencies:
   lottie: ^1.2.1
   google_fonts: ^4.0.3
   carousel_slider: ^4.0.0-nullsafety.0
+  flutter_joystick: ^0.0.3
 
 
 dev_dependencies:
