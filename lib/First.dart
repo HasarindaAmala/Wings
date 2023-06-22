@@ -1,19 +1,43 @@
 import 'dart:math';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_slider/carousel_state.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_app/ConnectMe.dart';
+import 'package:flutter_app/controlPage.dart';
+import 'package:flutter_app/testclass.dart';
+import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+
+
 class First extends StatefulWidget {
 
-  const First({Key? key}) : super(key: key);
+  final BluetoothConnection? connection;
+  const First({required this.connection});
 
   @override
   State<First> createState() => _FirstState();
 }
 
 class _FirstState extends State<First> {
+  BluetoothConnection? get connection => widget.connection;
+  //final FirebaseAuth _auth = FirebaseAuth.instance;
+  //User? _user;
+
+  @override
+  void initState() {
+    super.initState();
+   // _getUser();
+  }
+
+  // void _getUser() async {
+  //   User? user = _auth.currentUser;
+  //   setState(() {
+  //     _user = user;
+  //   });
+  // }
 
   int _current = 0;
 
@@ -93,15 +117,18 @@ List<Widget> generateImagesTiles(){
 
                     ),
                   ),
+                  //bluetooth --------------------------------------------------->
                   Positioned(
                     bottom: _height*0.84,
                     left: _width*0.75,
 
                     child: ElevatedButton(
                       onPressed: (){
+                        Navigator.of(context).pushNamed('/choice');
+
 
                       },
-                      child: Icon(Icons.shopping_cart_outlined),
+                      child: Icon(Icons.bluetooth),
                       style: ElevatedButton.styleFrom(
                         fixedSize: Size(_width*0.1, _height*0.1),
                         shadowColor: Colors.white,
@@ -123,14 +150,14 @@ List<Widget> generateImagesTiles(){
                       style: TextStyle(fontSize: 38.0,color: Colors.white,letterSpacing: 1.3,fontFamily:'JacquesFrancois'),
 
                   ),),
-                  Positioned(
-                    bottom: _height*0.72,
-                    left: _width*0.07,
-                    child: Text(
-                      "Follow The Dreams",
-                      style: TextStyle(fontSize: 18.0,color: Colors.white,letterSpacing: 1.3,fontFamily:'Julee'),
-
-                    ),),
+                  // Positioned(
+                  //   bottom: _height*0.72,
+                  //   left: _width*0.07,
+                  //   child: Text(
+                  //     'Welcome, ${_user?.email ?? ""}',
+                  //     style: TextStyle(fontSize: 18.0,color: Colors.white,letterSpacing: 1.3,fontFamily:'Julee'),
+                  //
+                  //   ),),
                   //controller button
                   Positioned(
                     bottom: _height*0.6,
@@ -245,6 +272,7 @@ List<Widget> generateImagesTiles(){
                         if (_current==3)...[
                           ElevatedButton(onPressed: (){
 
+
                           }, child: Icon(Icons.health_and_safety_outlined,size: 35.0,),
                             style: ElevatedButton.styleFrom(
                               fixedSize: Size(_width*0.1, _height*0.09),
@@ -257,6 +285,13 @@ List<Widget> generateImagesTiles(){
 
                         ] else...[
                           ElevatedButton(onPressed: (){
+                            print('pressed health reports');
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ConnectMePage()
+                              ),
+                            );
 
                           }, child: Icon(Icons.health_and_safety_outlined,size: 35.0,),
                             style: ElevatedButton.styleFrom(
@@ -375,7 +410,9 @@ List<Widget> generateImagesTiles(){
                     child: GestureDetector(
                       onTap: (){
                         if(_current == 0){
-                          Navigator.of(context).pushNamed('/Control');
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => controlPage(connection: connection))
+                          );
                         }else if(_current==1){
                           Navigator.of(context).pushNamed('/Medical');
                         }else if(_current==2){
