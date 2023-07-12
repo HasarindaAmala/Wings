@@ -8,8 +8,12 @@ import 'package:flutter/services.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_app/ConnectMe.dart';
 import 'package:flutter_app/controlPage.dart';
+import 'package:flutter_app/main.dart';
+import 'package:flutter_app/safetyReport.dart';
 import 'package:flutter_app/testclass.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:flutter_app/medicalReport.dart';
+
 
 
 class First extends StatefulWidget {
@@ -124,8 +128,9 @@ List<Widget> generateImagesTiles(){
 
                     child: ElevatedButton(
                       onPressed: (){
-                        Navigator.of(context).pushNamed('/choice');
-
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => MyApp()),
+                        );
 
                       },
                       child: Icon(Icons.bluetooth),
@@ -414,12 +419,20 @@ List<Widget> generateImagesTiles(){
                               MaterialPageRoute(builder: (context) => controlPage(connection: connection))
                           );
                         }else if(_current==1){
-                          Navigator.of(context).pushNamed('/Medical');
+                         // Navigator.of(context).pushNamed('/Medical');
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => medicalReportPage(connection: connection))
+                          );
                         }else if(_current==2){
-                          Navigator.of(context).pushNamed('/Safety');
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => SafetyReportPage())
+                          );
                         }else if(_current==3){
-                          Navigator.of(context).pushNamed('/ConnectUs');
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => ConnectMePage())
+                          );
                         }
+
 
 
                       },

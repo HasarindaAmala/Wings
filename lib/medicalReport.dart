@@ -1,18 +1,27 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 class medicalReportPage extends StatefulWidget {
-  const medicalReportPage({Key? key}) : super(key: key);
+  final BluetoothConnection? connection;
+  const medicalReportPage({required this.connection});
+
 
   @override
   State<medicalReportPage> createState() => _medicalReportPageState();
 }
+String receivedData='';
+String data = '';
 
 class _medicalReportPageState extends State<medicalReportPage> {
+  BluetoothConnection? get connection => widget.connection;
   @override
   Widget build(BuildContext context) {
 
     final _height = MediaQuery.of(context).size.height;
     final _width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: Center(
         child: Container(
@@ -27,7 +36,7 @@ class _medicalReportPageState extends State<medicalReportPage> {
                 left: _width*0.05,
 
                 child: ElevatedButton(onPressed: () {
-                  Navigator.of(context).pushNamed('/Home');
+                  Navigator.pop(context);
                 }, child: Icon(Icons.arrow_back),
                   style: ElevatedButton.styleFrom(
                     shadowColor: Colors.white.withOpacity(0.4),
@@ -36,8 +45,6 @@ class _medicalReportPageState extends State<medicalReportPage> {
                     fixedSize: Size(_width*0.15, _width*0.15),
                     backgroundColor: Color(0xFF1A193B),
                     side: BorderSide(color: Colors.white,width: 2.0),
-
-
                   ),
                 ),
               ),
@@ -141,8 +148,7 @@ class _medicalReportPageState extends State<medicalReportPage> {
                                 ),
                               ),
                               SizedBox(height: _height*0.01,),
-
-                              Text('Pulse Rate :',style: TextStyle(fontSize: 16.0),),
+                              data == ''? Text('Pulse Rate :',style: TextStyle(fontSize: 16.0),):Text(data,style: TextStyle(fontSize: 16.0),),
                             ],
                           ),
                           style: ElevatedButton.styleFrom(
@@ -177,7 +183,7 @@ class _medicalReportPageState extends State<medicalReportPage> {
                               ),
                               SizedBox(height: _height*0.01,),
 
-                              Text('Heart Beat :',style: TextStyle(fontSize: 16.0),),
+                              data == ''? Text('Heart Beat :',style: TextStyle(fontSize: 16.0),):Text(data,style: TextStyle(fontSize: 16.0),),
                             ],
                           ),
                           style: ElevatedButton.styleFrom(
@@ -240,7 +246,14 @@ class _medicalReportPageState extends State<medicalReportPage> {
                 left: _width*0.14,
                 child: Row(
                   children: [
-                    ElevatedButton(onPressed: (){}, child: Padding(
+                    ElevatedButton(onPressed: (){
+                      _sendOnMessageToBluetooth('9');
+                      _RecivedMessageToBluetooth();
+                       data = receivedData;
+
+
+
+                    }, child: Padding(
 
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -296,4 +309,26 @@ class _medicalReportPageState extends State<medicalReportPage> {
 
     );
   }
+  void _RecivedMessageToBluetooth() async {
+
+
+      connection?.input?.listen((data) {
+      receivedData = String.fromCharCodes(data).trim();
+
+      // Parse the received data as per your sensor data format
+      // For example, if the data is comma-separated values (CSV) like "sensor1,sensor2,sensor3"
+
+    });
+  }
+  void _sendOnMessageToBluetooth(String value) async {
+    String Value = value.toString() ;
+    print('hi->'+Value);
+    Uint8List data = utf8.encode(Value + "\r\n") as Uint8List;
+    widget.connection?.output.add(data);
+    await widget.connection?.output.allSent;
+    //_showSnackBar('LED Turned On');
+  }
 }
+
+
+

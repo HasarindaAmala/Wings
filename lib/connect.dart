@@ -1,12 +1,12 @@
-// import 'package:flutter/services.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_app/config.dart';
-// //import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
-//
-// class ConnectPage extends StatelessWidget {
+import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_app/config.dart';
+//import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
+
+// class connectPage extends StatelessWidget {
 //   final String conferenceID;
 //
-//   const ConnectPage({
+//   const connectPage({
 //     Key? key,
 //     required this.conferenceID,
 //   }) : super(key: key);

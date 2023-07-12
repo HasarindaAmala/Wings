@@ -27,7 +27,7 @@ class _SafetyReportPageState extends State<SafetyReportPage> {
                left: _width*0.05,
 
                child: ElevatedButton(onPressed: () {
-                 Navigator.of(context).pushNamed('/Home');
+                 Navigator.pop(context);
                }, child: Icon(Icons.arrow_back),
                  style: ElevatedButton.styleFrom(
                    shadowColor: Colors.white.withOpacity(0.4),
@@ -177,7 +177,7 @@ class _SafetyReportPageState extends State<SafetyReportPage> {
                              ),
                              SizedBox(height: _height*0.01,),
 
-                             Text('Break',style: TextStyle(fontSize: 20.0),),
+                             Text('Seat',style: TextStyle(fontSize: 20.0),),
                            ],
                          ),
                          style: ElevatedButton.styleFrom(

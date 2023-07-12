@@ -118,11 +118,14 @@ class _controlPageState extends State<controlPage> {
                     setState(() {
                       int y = (details.x*10).toInt() ;
                       if(y<0){
-                        y = y+31;
+                        _sendOnMessageToBluetooth('3');
+                      }else if (y>0){
+                        _sendOnMessageToBluetooth('4');
                       }
-                      String val = y.toString();
-                      _sendOnMessageToBluetooth(val);
-                      print(y);
+                      else if(y==0){
+                        _sendOnMessageToBluetooth('0');
+                      }
+
 
                       //print(details.y);
 
@@ -145,7 +148,11 @@ class _controlPageState extends State<controlPage> {
 
                     child: GestureDetector(
                       //onTap:  _sendOnMessageToBluetooth,
-                      onLongPress: (){_sendOnMessageToBluetooth('1');},
+
+                      onLongPress: (){
+                        forward ? _sendOnMessageToBluetooth('1') : _sendOnMessageToBluetooth('2');
+
+                       },
                       onLongPressUp: (){_sendOnMessageToBluetooth('0');},
 
 
@@ -175,7 +182,7 @@ class _controlPageState extends State<controlPage> {
                         //Gear box ------------------------------------------------------------------------------->
                         Container(
                           height: _height * 0.23,
-                          width: _width * 0.27,
+                          width: _width * 0.29,
                           decoration: BoxDecoration(
                             // borderRadius: BorderRadius.circular(15.0),
                             image: DecorationImage(
@@ -204,7 +211,7 @@ class _controlPageState extends State<controlPage> {
                           child: Row(
                             children: [
                               SizedBox.fromSize(
-                                  size: Size(_width * 0.025, 15.0)),
+                                  size: Size(_width * 0.02, 15.0)),
 
                               ElevatedButton(onPressed: (){
 
@@ -288,7 +295,7 @@ class _controlPageState extends State<controlPage> {
                     child: Column(
                     children: [
                       GestureDetector(
-                        onLongPress:(){_sendOnMessageToBluetooth('1');},
+                        onLongPress:(){_sendOnMessageToBluetooth('5');},
                         onLongPressUp: (){_sendOnMessageToBluetooth('0');},
                         child: ElevatedButton( onPressed: () {
 
@@ -296,7 +303,7 @@ class _controlPageState extends State<controlPage> {
                         child: Icon(Icons.arrow_upward),),
                       ),
                       GestureDetector(
-                        onLongPress:(){_sendOnMessageToBluetooth('1');},
+                        onLongPress:(){_sendOnMessageToBluetooth('6');},
                         onLongPressUp: (){_sendOnMessageToBluetooth('0');},
                         child: ElevatedButton( onPressed: () {
 
@@ -328,7 +335,7 @@ class _controlPageState extends State<controlPage> {
                     child: Column(
                       children: [
                         GestureDetector(
-                          onLongPress:(){_sendOnMessageToBluetooth('1');},
+                          onLongPress:(){_sendOnMessageToBluetooth('7');},
                           onLongPressUp: (){_sendOnMessageToBluetooth('0');},
                           child: ElevatedButton( onPressed: () {
 
@@ -336,7 +343,7 @@ class _controlPageState extends State<controlPage> {
                             child: Icon(Icons.arrow_upward),),
                         ),
                         GestureDetector(
-                          onLongPress:(){_sendOnMessageToBluetooth('1');},
+                          onLongPress:(){_sendOnMessageToBluetooth('8');},
                           onLongPressUp: (){_sendOnMessageToBluetooth('0');},
                           child: ElevatedButton( onPressed: () {
 
@@ -381,5 +388,6 @@ class _controlPageState extends State<controlPage> {
       ),
     );
   }
+
 
 }

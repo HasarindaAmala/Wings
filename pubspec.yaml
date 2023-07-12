@@ -48,11 +48,13 @@ dependencies:
   carousel_slider: ^4.0.0-nullsafety.0
   flutter_joystick: ^0.0.3
   cloud_firestore: ^4.8.1
-  control_button: ^0.0.2
   firebase_core: ^2.14.0
   firebase_database: ^10.2.3
   firebase_auth: ^4.6.3
   flutter_bluetooth_serial: ^0.4.0
+  image_picker: ^1.0.0
+  permission_handler: ^10.4.1
+ # zego_uikit_prebuilt_video_conference: ^2.3.2
 
 
 dev_dependencies:

@@ -2,7 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/config.dart';
 //import 'package:zego_uikit_prebuilt_video_conference/zego_uikit_prebuilt_video_conference.dart';
-//import 'package:flutter_app/Connect.dart';
+import 'package:flutter_app/connect.dart';
 
 class ConnectMePage extends StatelessWidget {
   const ConnectMePage({super.key});
@@ -75,7 +75,7 @@ class ConnectMePage extends StatelessWidget {
                   ElevatedButton(
 
                     onPressed: () {
-                      SystemNavigator.pop();
+                      Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
 
@@ -91,7 +91,7 @@ class ConnectMePage extends StatelessWidget {
                     ),
                     child:
 
-                    const Icon(Icons.clear),
+                    const Icon(Icons.arrow_back_sharp),
                   ),
                 ),
                 //profile pic
@@ -147,12 +147,12 @@ class ConnectMePage extends StatelessWidget {
                     width: width * 0.24,
                     child: ElevatedButton(
                       onPressed: () {
-                        print('pressed health reports');
+                        print('pressed');
                         // Navigator.push(
                         //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => const ConnectPage(conferenceID: 'user1',)
-                        //   ),
+                        //   // MaterialPageRoute(
+                        //   //     builder: (context) => const connectPage(conferenceID: 'user1',)
+                        //   // ),
                         // );
                       },
                       style: ElevatedButton.styleFrom(

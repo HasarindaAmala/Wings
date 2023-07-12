@@ -1,7 +1,7 @@
 class config {
-  static int appID = 76128212;
+  static int appID = 1209647948;
   static String appSign =
-      "238a941014a2110c994e61fba8b3cecb6e35576b5f5c248d8685f05c13dc3f94";
+      "a8ec7c929affe668671eb300a59ebc78059563abac702e05d8ce863340652494";
   static String userID = 'user2';
   static String userName = 'userr';
 }

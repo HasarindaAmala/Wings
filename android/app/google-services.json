@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "93042379892",
+    "project_id": "wiiings",
+    "storage_bucket": "wiiings.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93042379892:android:161fc797b80ecd216a5521",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93042379892-pkbt59bo45qfshlhug36e8r6i0e7mcm8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6k57MWrmAzsKbuRDU3nzx5dV9sgjTZ6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93042379892-pkbt59bo45qfshlhug36e8r6i0e7mcm8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
