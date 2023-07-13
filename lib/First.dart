@@ -10,7 +10,7 @@ import 'package:flutter_app/ConnectMe.dart';
 import 'package:flutter_app/controlPage.dart';
 import 'package:flutter_app/main.dart';
 import 'package:flutter_app/safetyReport.dart';
-import 'package:flutter_app/testclass.dart';
+
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:flutter_app/medicalReport.dart';
 
